@@ -1,11 +1,17 @@
-function fixNavbar() {
-  let navbar = document.querySelectorAll("nav.navbar.fixed");
-  navbar.forEach((el, key, parent) => {
-    console.log(el.clientHeight);
-    let afterNavbar = el.nextElementSibling;
-    let marginTop = getComputedStyle(afterNavbar).marginTop;
-    console.log(marginTop);
-    afterNavbar.style.marginTop = `calc(${marginTop} + ${el.clientHeight}px)`;
-  });
-}
-fixNavbar();
+// Fix Missing navbar height due to fixed position
+$("nav.navbar.fixed").each(function () {
+  let next = $(this).next();
+  next.css(
+    "padding-top",
+    `calc(${next.css("padding-top")} + ${$(this).height()}px)`
+  );
+});
+
+$(".expand-menu").click(function (ev) {
+  let ul = $(this).next("ul");
+  if (ul.css("display") === "flex") {
+    ul.css("display", "none");
+  } else {
+    ul.css("display", "flex");
+  }
+});

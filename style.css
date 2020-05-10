@@ -8,7 +8,7 @@ body {
   /* font-family: 'Rajdhani', sans-serif; */
   font-family: "Ubuntu", sans-serif;
   color: var(--clr-primary);
-  font-size: 16px;
+  font-size: 14px;
   padding-bottom: 100vh;
 }
 
@@ -39,11 +39,38 @@ a {
   color: inherit;
 }
 
+.hamburger {
+  --size-hamburger-width: 1em;
+  --size-hamburger-height: 0.15em;
+
+  display: block;
+
+  width: var(--size-hamburger-width);
+  height: calc(4 * var(--size-hamburger-height));
+
+  border-top: var(--size-hamburger-height) solid currentColor;
+  border-bottom: var(--size-hamburger-height) solid currentColor;
+
+  position: relative;
+}
+
+.hamburger::before {
+  content: "";
+  display: block;
+  background-color: currentColor;
+
+  width: var(--size-hamburger-width);
+  height: var(--size-hamburger-height);
+
+  position: absolute;
+  top: calc(50% - var(--size-hamburger-height) / 2);
+}
+
 /* Navbar */
 nav.navbar {
   background-color: var(--clr-primary);
   color: var(--clr-secondary);
-  padding: 0.5em 3em;
+  padding: 0.5em 1em;
   box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.3);
 
   font-size: 1.1rem;
@@ -87,15 +114,28 @@ nav.navbar .navbar-brand a * {
   margin: 0 0.5em 0 0;
 }
 
+nav.navbar .expand-menu {
+  margin-left: auto;
+  font-size: 2em;
+
+  transition: 0.1s;
+}
+nav.navbar .expand-menu:hover {
+  font-size: 2.2em;
+}
+
 nav.navbar ul {
   margin: 0;
+  padding: 0;
 
   flex-grow: 1;
 
   list-style: none;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
+
+  display: none;
 }
 
 nav.navbar ul li {
@@ -116,19 +156,20 @@ nav.navbar ul a:hover {
 .hero {
   width: 100%;
   background-color: var(--clr-secondary);
-  height: 400px;
+  padding: 1em 0;
 
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  font-size: 5rem;
 }
 .hero h1 {
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
 
-  font-size: 10rem;
+  font-size: inherit;
   line-height: 0.75;
   font-family: "Rajdhani", sans-serif;
   font-weight: 500;
@@ -139,6 +180,7 @@ nav.navbar ul a:hover {
   vertical-align: middle;
 
   font-size: 2rem;
+  font-size: 0.2em;
   font-family: "Rajdhani", sans-serif;
   font-weight: 500;
   letter-spacing: 0.4em;
@@ -165,9 +207,6 @@ nav.navbar ul a:hover {
   background-color: var(--clr-primary);
   color: var(--clr-secondary);
 }
-.panel:nth-child(even) .columns {
-  flex-direction: row-reverse;
-}
 .panel:nth-child(even) svg {
   fill: var(--clr-secondary);
 }
@@ -185,14 +224,23 @@ nav.navbar ul a:hover {
 }
 
 .columns {
+  max-width: 40em;
+  margin: 0 auto;
+
   display: flex;
   align-items: center;
+  flex-direction: column-reverse;
 }
 .columns .text {
-  flex: 3;
+  flex: 5;
 }
-.columns img {
+.columns .image {
   flex: 2;
+  padding: 2em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* /Panel */
 
@@ -201,4 +249,54 @@ nav.navbar ul a:hover {
 .craton-logo {
   stroke: var(--clr-secondary);
   transform: scale(calc(72 / 1024));
+}
+
+@media (min-width: 480px) {
+  .hero {
+    font-size: 7rem;
+  }
+
+  nav.navbar {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+}
+@media (max-width: 480px) {
+  nav.navbar .navbar-brand a span {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  nav.navbar .expand-menu {
+    display: none;
+  }
+  nav.navbar ul {
+    display: flex;
+  }
+
+  .hero {
+    font-size: 10rem;
+  }
+
+  .panel:nth-child(even) .columns {
+    flex-direction: row-reverse;
+  }
+  .columns {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 18px;
+  }
+
+  .hero {
+    font-size: 15rem;
+  }
 }
