@@ -1,0 +1,204 @@
+:root {
+  --clr-primary: rgb(85, 25, 32);
+  --clr-secondary: rgb(234, 211, 148);
+}
+
+/* Typography */
+body {
+  /* font-family: 'Rajdhani', sans-serif; */
+  font-family: "Ubuntu", sans-serif;
+  color: var(--clr-primary);
+  font-size: 16px;
+  padding-bottom: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: "Rajdhani", sans-serif;
+}
+
+p {
+  max-width: 60ch;
+}
+/* /Typography */
+
+/* Layout */
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+/* Navbar */
+nav.navbar {
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary);
+  padding: 0.5em 3em;
+  box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.3);
+
+  font-size: 1.1rem;
+
+  z-index: 99;
+
+  display: flex;
+  align-items: center;
+}
+
+nav.navbar.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav.navbar a {
+  text-decoration: none;
+  font-weight: 600;
+  font-family: "Rajdhani", sans-serif;
+}
+
+nav.navbar .navbar-brand {
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: "Rajdhani", sans-serif;
+}
+nav.navbar .navbar-brand * {
+  display: block;
+}
+nav.navbar .navbar-brand a {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+nav.navbar .navbar-brand a * {
+  margin: 0 0.5em 0 0;
+}
+
+nav.navbar ul {
+  margin: 0;
+
+  flex-grow: 1;
+
+  list-style: none;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+nav.navbar ul li {
+  margin: 0 0.5em;
+}
+
+nav.navbar ul a {
+  text-align: center;
+  vertical-align: middle;
+  transition: 0.2s;
+}
+nav.navbar ul a:hover {
+  font-size: 1.3em;
+}
+/* /Navbar */
+
+/* Hero */
+.hero {
+  width: 100%;
+  background-color: var(--clr-secondary);
+  height: 400px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero h1 {
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+
+  font-size: 10rem;
+  line-height: 0.75;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.07em;
+}
+.hero h2 {
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: 2rem;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+}
+/* /Hero */
+
+/* Main Content */
+.main-content p {
+  text-align: justify;
+}
+/* /Main Content */
+
+/* Panel */
+.panel {
+  position: relative;
+  padding: 4em 20%;
+  background-color: white;
+  color: var(--clr-primary);
+}
+.panel svg {
+  fill: var(--clr-primary);
+}
+.panel:nth-child(even) {
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary);
+}
+.panel:nth-child(even) .columns {
+  flex-direction: row-reverse;
+}
+.panel:nth-child(even) svg {
+  fill: var(--clr-secondary);
+}
+
+.panel h2 {
+  margin-bottom: 1.5em;
+}
+
+:target::before {
+  --size-offset: 100px;
+  content: "";
+  display: block;
+  height: var(--size-offset);
+  margin-top: -var(--size-offset);
+}
+
+.columns {
+  display: flex;
+  align-items: center;
+}
+.columns .text {
+  flex: 3;
+}
+.columns img {
+  flex: 2;
+}
+/* /Panel */
+
+/* /Layout */
+
+.craton-logo {
+  stroke: var(--clr-secondary);
+  transform: scale(calc(72 / 1024));
+}
